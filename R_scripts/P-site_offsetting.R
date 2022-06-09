@@ -8,7 +8,7 @@ df = create_annotation(gtfpath = "../Datasets/reference_files/annotation.gtf")
 # a file that has been aligned to the genome. 
 
 # Load up bam_list from transcriptome.
-bam_list = bamtolist("../Datasets/Testing_Alignment_Files_Transcriptome",
+bam_list = bamtolist("../Datasets/testing_transcriptome_alignments",
                      annotation = df)
 
 # Calculate P_site offset.
@@ -21,7 +21,7 @@ for (i in 1:length(samples)) {
   sam_offs = subset(offsets, sample == samples[i], 
                     select = c("length", "corrected_offset_from_3"))
   colnames(sam_offs) = c("length", "p_offset")
-  write.table(sam_offs, paste("../Datasets/p_site_offsets/",
+  write.table(sam_offs, paste("../Datasets/testing_Psite_offsets/",
                               samples[i],"_p-site-offsets", sep=""),sep = "\t" , row.names = FALSE)
   
 }
